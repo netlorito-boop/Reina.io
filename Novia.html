@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Para Ti 💖</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+            font-family: 'Segoe UI', sans-serif;
+        }
+
+        body {
+            margin: 0;
+            height: 100vh;
+            background: linear-gradient(135deg, #ff9a9e, #fad0c4, #fbc2eb);
+            background-size: 400% 400%;
+            animation: fondo 10s ease infinite;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+            color: #4b004b;
+        }
+
+        @keyframes fondo {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        .contenedor {
+            background: rgba(255, 255, 255, 0.9);
+            padding: 40px;
+            border-radius: 30px;
+            max-width: 800px;
+            text-align: center;
+            box-shadow: 0 0 50px rgba(255, 0, 120, 0.4);
+            animation: aparecer 2s ease;
+            z-index: 2;
+        }
+
+        @keyframes aparecer {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        h1 {
+            font-size: 2.5em;
+            color: #c2185b;
+            margin-bottom: 20px;
+            animation: latido 2s infinite;
+        }
+
+        @keyframes latido {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+
+        #texto {
+            font-size: 1.2em;
+            line-height: 1.8;
+            min-height: 220px;
+            white-space: pre-wrap;
+        }
+
+        .pregunta {
+            font-size: 3em;
+            margin-top: 30px;
+            color: #e91e63;
+            display: none;
+            animation: aparecer 1.5s ease;
+        }
+
+        .botones {
+            margin-top: 25px;
+            display: none;
+        }
+
+        .boton {
+            padding: 15px 35px;
+            font-size: 1.2em;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            margin: 10px;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .si {
+            background: linear-gradient(45deg, #ff4081, #f50057);
+            color: white;
+            box-shadow: 0 5px 15px rgba(245, 0, 87, 0.5);
+        }
+
+        .no {
+            background: linear-gradient(45deg, #bdbdbd, #757575);
+            color: white;
+            box-shadow: 0 5px 15px rgba(100, 100, 100, 0.5);
+        }
+
+        .boton:hover {
+            transform: scale(1.1);
+        }
+
+        .corazon {
+            position: absolute;
+            top: -10%;
+            color: rgba(255, 0, 100, 0.4);
+            font-size: 20px;
+            animation: caer linear infinite;
+        }
+
+        @keyframes caer {
+            0% {
+                transform: translateY(-10vh) rotate(0deg);
+                opacity: 0;
+            }
+            10% { opacity: 1; }
+            100% {
+                transform: translateY(110vh) rotate(360deg);
+                opacity: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div class="contenedor">
+    <h1>Para ti, con todo mi corazón 💕</h1>
+
+    <div id="texto"></div>
+
+    <div class="pregunta">¿Quieres ser mi novia? 💍</div>
+
+    <div class="botones">
+        <button class="boton si" onclick="respuestaSi()">SÍ 💖</button>
+        <button class="boton no" onclick="respuestaNo()">NO 💔</button>
+    </div>
+</div>
+
+<script>
+    const mensaje = `Quiero que sepas lo importante que eres para mí.
+Desde que llegaste a mi vida,
+todo se siente más bonito, más real, más sincero.
+
+Me haces sonreír sin darme cuenta,
+me das paz con solo existir,
+y me encantaría seguir construyendo momentos contigo.
+
+No prometo perfección,
+pero sí un corazón honesto,
+leal y lleno de amor para ti.`;
+
+    let i = 0;
+    const velocidad = 45;
+    const texto = document.getElementById("texto");
+    const pregunta = document.querySelector(".pregunta");
+    const botones = document.querySelector(".botones");
+
+    function escribir() {
+        if (i < mensaje.length) {
+            texto.innerHTML += mensaje.charAt(i);
+            i++;
+            setTimeout(escribir, velocidad);
+        } else {
+            setTimeout(() => {
+                pregunta.style.display = "block";
+                botones.style.display = "block";
+            }, 1000);
+        }
+    }
+
+    escribir();
+
+    function respuestaSi() {
+        window.location.href = "https://wa.me/573024831757?text=SI%20QUIERO%20ESTAR%20CONTIGO%20DEIVY";
+    }
+
+    function respuestaNo() {
+        window.location.href = "https://wa.me/573024831757?text=NO%20QUIERO%20ESTAR%20CONTIGO";
+    }
+
+    function crearCorazon() {
+        const corazon = document.createElement("div");
+        corazon.classList.add("corazon");
+        corazon.innerHTML = "💖";
+        corazon.style.left = Math.random() * 100 + "vw";
+        corazon.style.fontSize = Math.random() * 20 + 15 + "px";
+        corazon.style.animationDuration = Math.random() * 5 + 5 + "s";
+        document.body.appendChild(corazon);
+
+        setTimeout(() => {
+            corazon.remove();
+        }, 10000);
+    }
+
+    setInterval(crearCorazon, 300);
+</script>
+
+</body>
+</html>
