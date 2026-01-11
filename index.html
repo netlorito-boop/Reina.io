@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Para mi Novia Reina 💖</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            font-family: 'Segoe UI', sans-serif;
+        }
+
+        body {
+            margin: 0;
+            height: 100vh;
+            background: linear-gradient(135deg, #ffb6c1, #dda0dd, #ffe4e1);
+            background-size: 400% 400%;
+            animation: fondo 12s ease infinite;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+            color: #4b004b;
+        }
+
+        @keyframes fondo {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        .contenedor {
+            background: rgba(255, 255, 255, 0.85);
+            padding: 40px;
+            border-radius: 25px;
+            max-width: 800px;
+            text-align: center;
+            box-shadow: 0 0 40px rgba(255, 0, 100, 0.3);
+            animation: aparecer 2s ease;
+        }
+
+        @keyframes aparecer {
+            from {
+                opacity: 0;
+                transform: scale(0.8);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        h1 {
+            font-size: 3em;
+            margin-bottom: 20px;
+            color: #c2185b;
+            animation: latido 2s infinite;
+        }
+
+        @keyframes latido {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+
+        #texto {
+            font-size: 1.2em;
+            line-height: 1.8;
+            white-space: pre-wrap;
+            min-height: 220px;
+            margin-top: 20px;
+        }
+
+        .boton {
+            margin-top: 30px;
+            padding: 15px 30px;
+            font-size: 1.1em;
+            background: linear-gradient(45deg, #ff69b4, #ff1493);
+            color: white;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            box-shadow: 0 5px 15px rgba(255, 20, 147, 0.4);
+            transition: transform 0.3s, box-shadow 0.3s;
+            display: none;
+        }
+
+        .boton:hover {
+            transform: scale(1.08);
+            box-shadow: 0 10px 25px rgba(255, 20, 147, 0.6);
+        }
+
+        .corazones span {
+            position: absolute;
+            color: rgba(255, 0, 100, 0.4);
+            font-size: 20px;
+            animation: flotar 10s linear infinite;
+        }
+
+        @keyframes flotar {
+            0% {
+                transform: translateY(100vh) scale(0.5);
+                opacity: 0;
+            }
+            50% {
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(-10vh) scale(1.2);
+                opacity: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div class="corazones">
+    <span style="left:10%">💖</span>
+    <span style="left:30%">💗</span>
+    <span style="left:50%">💕</span>
+    <span style="left:70%">💞</span>
+    <span style="left:90%">💓</span>
+</div>
+
+<div class="contenedor">
+    <h1>PARA MI NOVIA REINA 👑</h1>
+    <div id="texto"></div>
+
+    <button class="boton" onclick="ir()">PRESIÓNAME SI ESTÁS PREPARADA PARA LO SIGUIENTE 💕</button>
+</div>
+
+<script>
+    const mensaje = `Sé que no llevamos mucho tiempo,
+sé que nos conocimos hace no mucho,
+pero quiero decirte que te amo.
+
+Quiero que sepas que me ayudas mucho con solo verte,
+que valoro cada segundo contigo
+y aprecio muchísimo tu compañía.
+
+TE AMO.
+
+Un te amo sincero y de corazón,
+te miro el alma y sé lo linda que eres.
+
+Quiero vivir contigo experiencias inolvidables,
+experiencias que ni la muerte pueda borrar de nuestros recuerdos.`;
+
+    let i = 0;
+    const velocidad = 40;
+    const texto = document.getElementById("texto");
+    const boton = document.querySelector(".boton");
+
+    function escribir() {
+        if (i < mensaje.length) {
+            texto.innerHTML += mensaje.charAt(i);
+            i++;
+            setTimeout(escribir, velocidad);
+        } else {
+            boton.style.display = "inline-block";
+        }
+    }
+
+    setTimeout(escribir, 1500);
+
+    function ir() {
+        window.location.href = "Novia.html";
+    }
+</script>
+
+</body>
+</html>
